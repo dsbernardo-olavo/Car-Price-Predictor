@@ -12,8 +12,8 @@ def load_data():
 
 model, df = load_data()
 
-st.title("Car Price Estimator")
-st.write("Provide the data below to get an estimated price:")
+st.title("Car Price Estimator 🚗")
+st.write("Provide the data below to get an estimated price for your car")
 
 st.divider()
 
@@ -40,7 +40,8 @@ with col2:
 
     year = st.number_input("Year", min_value=2000, max_value=2026, value=2020)
 
-    engine = st.number_input("Engine Size (L)", min_value=1.0, max_value=6.0, value=2.0, step=0.1)
+    engine_options = sorted(df['Engine_Size'].unique())
+    engine = st.selectbox("Engine Size (L)", engine_options)
 
     door_options = sorted(df['Doors'].unique())
     doors = st.selectbox("Doors", door_options)
