@@ -31,15 +31,15 @@ df = pd.read_csv("/kaggle/input/datasets/dsbernardo/carprice/CarPriceDataset.csv
 <p align="center">
 <img width="681" height="304" alt="image" src="https://github.com/user-attachments/assets/c13dd4e8-da16-4313-a19f-a0314712a540" />
 </p>
-  df.head()
-df.describe()
+<p>df.head()</p>
+<p>df.describe()</p>
 
 🔀 **Correlation between numerical categories**
-![Uploading image.png…]()
+
 df.select_dtypes(include=['int64','float64']).corr()
 
 📈 **Boxplot chart of the target variable (price)**
-![Uploading image.png…]()
+
 
 sns.boxplot(df['Price'])
 
