@@ -18,7 +18,9 @@
 <p align="center">
 <img width="621" height="243" alt="image" src="https://github.com/user-attachments/assets/f38d641a-e43c-4050-a9f5-3cbf58a43fc0" />
 </p>
+
 _The correlation chart shows that:_
+
 - The first quartile (Q1) is priced below approximately $6,500
 - The second quartile (Median) shows that the cars are priced around $9,000
 - The third quartile (Q3) shows that 75% are priced below approximately $11,000
