@@ -19,17 +19,19 @@
 <img width="621" height="243" alt="image" src="https://github.com/user-attachments/assets/f38d641a-e43c-4050-a9f5-3cbf58a43fc0" />
 </p>
 
-_The correlation chart shows that:_
-
-- The first quartile (Q1) is priced below approximately $6,500
-- The second quartile (Median) shows that the cars are priced around $9,000
-- The third quartile (Q3) shows that 75% are priced below approximately $11,000
-- The fourth quartile (Q4) shows that the outliers are priced above $18,000
+_The correlation table indicates that:_ Year plays a major role in determining car prices, followed by engine size, number of owners, and number of doors. Mileage shows a negative correlation, meaning that the higher the mileage, the lower the car’s price tends to be.
 
 📈 **Boxplot chart of the target variable (price)**
 <p align="center">
 <img width="652" height="432" alt="image" src="https://github.com/user-attachments/assets/df698a3a-2e9d-4199-8708-0e4921f649ed" />
 </p>
+
+_The boxplot chart shows that:_
+
+- The first quartile is priced below approximately $6,500
+- The second quartile (Median) shows that the cars are priced around $9,000
+- The third quartile shows that 75% are priced below approximately $11,000
+- The fourth quartile shows that the outliers are priced above $18,000
 
 📈 **Heatmap of the predictable variables**
 <p align="center">
