@@ -9,51 +9,34 @@
 </p>
 🔗 https://car-price-predictor-dsbernardo.streamlit.app/
 
-**Importing libraries**
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt 
-import seaborn as sns
-
-from sklearn.model_selection import train_test_split
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-from sklearn.pipeline import Pipeline
-
-⌛ **Loading dataset**
-
-df = pd.read_csv("/kaggle/input/datasets/dsbernardo/carprice/CarPriceDataset.csv", sep= ";")
-
 🏁 **Initial data exploration**
 <p align="center">
 <img width="681" height="304" alt="image" src="https://github.com/user-attachments/assets/c13dd4e8-da16-4313-a19f-a0314712a540" />
 </p>
-<p>df.head()</p>
-<p>df.describe()</p>
 
 🔀 **Correlation between numerical categories**
-
-df.select_dtypes(include=['int64','float64']).corr()
+<p align="center">
+<img width="621" height="243" alt="image" src="https://github.com/user-attachments/assets/f38d641a-e43c-4050-a9f5-3cbf58a43fc0" />
+</p>
+_The correlation chart shows that:_
+- The first quartile (Q1) is priced below approximately $6,500
+- The second quartile (Median) shows that the cars are priced around $9,000
+- The third quartile (Q3) shows that 75% are priced below approximately $11,000
+- The fourth quartile (Q4) shows that the outliers are priced above $18,000
 
 📈 **Boxplot chart of the target variable (price)**
-
-
-sns.boxplot(df['Price'])
+<p align="center">
+<img width="652" height="432" alt="image" src="https://github.com/user-attachments/assets/df698a3a-2e9d-4199-8708-0e4921f649ed" />
+</p>
 
 📈 **Heatmap of the predictable variables**
+<p align="center">
+<img width="612" height="442" alt="image" src="https://github.com/user-attachments/assets/e944cfd2-c742-4dca-8c10-3538250415f0" />
+</p>
 
-plt.figure(figsize=(12,8))
-sns.heatmap(df.select_dtypes(include=['int64','float64']).corr()[['Price']].sort_values(by='Price', ascending=False),
-            annot=True, cmap="coolwarm")
-plt.show()
+🧼 **Data cleaning**
 
-**Data cleaning (standardizing the number of doors - not considering the trunk as a door)**
-
-df[df['Doors']== 3]
-df['Doors']= df['Doors'].replace({3:2, 5:4})
+Given that the number of doors was taking the car trunk into consideration, cars with three doors were considered cars with two doors and cars with five doors were considered cars with four doors.
 
 **Linear regression model**
 
