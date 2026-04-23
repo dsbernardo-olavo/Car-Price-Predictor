@@ -31,7 +31,7 @@ _The correlation table indicates that:_ Year plays a major role in determining c
 <img width="652" height="432" alt="image" src="https://github.com/user-attachments/assets/df698a3a-2e9d-4199-8708-0e4921f649ed" />
 </p>
 
-_The boxplot chart shows that:_
+_The boxplot chart indicates that:_
 
 - The first quartile is priced below approximately $6,500
 - The second quartile (Median) shows that the cars are priced around $9,000
@@ -40,7 +40,7 @@ _The boxplot chart shows that:_
 
 🧼 **Data cleaning**
 
-Since the number of doors included the trunk in the count, cars with three doors were classified as two‑door cars, and cars with five doors were classified as four‑door cars.
+Since the number of doors included the trunk in the count, cars with three doors were classified as **two‑door cars**, and cars with five doors were classified as **four‑door cars**.
 
 🔮 **Prediction**
 <p align="center">
@@ -57,31 +57,26 @@ The model shows very **strong performance**. The Root Mean Squared Error (RMSE) 
 <img width="598" height="452" alt="image" src="https://github.com/user-attachments/assets/289f0a90-dcd1-43ff-a921-f81eaf44625d" />
 </p>
 
-The first plot confirms that errors are generally small and randomly distributed, with only a few outliers at lower price ranges. Complementing this, the second plot shows that most predictions fall very close to the diagonal reference line, highlighting the model’s **strong fit** and high explanatory power. Together, these charts demonstrate both the accuracy of the predictions and the reliability of the error distribution.
+The first plot confirms that errors are generally small and randomly distributed, with only a few outliers at lower price ranges. Complementing this, the second plot shows that most predictions fall very close to the diagonal reference line, highlighting the model’s **strong fit** and **high explanatory power**. Together, these charts demonstrate both the accuracy of the predictions and the reliability of the error distribution.
 
+👨‍💻 **Overall development:**
 
-**Estimating the price of a new car**
+- **Model:** Linear regression
+- **Data split:** Training (80%)/ Test (20%)
+- **Preprocessing:** One-hot encoding for categorical variables (brand, model, transmission and fuel type) and standardization for numerical variables
+- **Pipeline:** Integrated preprocessing and regression steps using _scikit-learn's pipeline_ in order to ensure reproductibility, prevent data leakage and keep a clean workflow.
 
-new_car= {
-    'Brand': ['Toyota'],
-    'Model': ['Corolla'],
-    'Year': [2008],
-    'Engine_Size': [2.0],
-    'Fuel_Type': ['Diesel'],
-    'Transmission': ['Manual'],
-    'Mileage': [15000],
-    'Doors': [2],
-    'Owner_Count': [1]
-}
-df_new_car = pd.DataFrame(new_car)
-predicted_price = pipeline.predict(df_new_car)
-print(f"The estimated price for this car is: ${predicted_price[0]:.2f}")
+📲 **App integration:**
+
+This project includes an **interactive Streamlit app** that allows users to input car features and instantly receive a predicted price. The app integrates the trained pipeline (preprocessing + linear regression) and provides a user‑friendly interface for testing the model.
+
+👉 https://car-price-predictor-dsbernardo.streamlit.app/ 
 
 🛠️ **Tools used to build the project:**
 
 - Kaggle (dataset source)
 - Python
-- https://share.streamlit.io/ (app development)
+- https://share.streamlit.io/
 
 📬 **Feel free to connect or discuss this project:**
 
