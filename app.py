@@ -24,14 +24,11 @@ with col1:
     brands = sorted(df['Brand'].unique())
     brand = st.selectbox("Brand", brands)
 
-
     models_filtered = sorted(df[df['Brand'] == brand]['Model'].unique())
     model_car = st.selectbox("Model", models_filtered)
 
-
     fuels = sorted(df['Fuel_Type'].unique())
     fuel = st.selectbox("Fuel Type", fuels)
-
 
     transmissions = sorted(df['Transmission'].unique())
     trans = st.selectbox("Transmission", transmissions)
