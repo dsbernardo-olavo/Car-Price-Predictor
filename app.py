@@ -8,6 +8,7 @@ st.set_page_config(page_title="Car Price Estimator", page_icon="🚗")
 def load_data():
     model = joblib.load('car_price_model.pkl')
     df = pd.read_csv("CarPriceDataset.csv", sep=";")
+    df['Doors'] = df['Doors'].replace({3: 2, 5: 4})
     return model, df
 
 model, df = load_data()
