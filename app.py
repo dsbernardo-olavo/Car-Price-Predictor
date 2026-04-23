@@ -2,28 +2,78 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model = joblib.load('car_price_model.pkl')
+st.set_page_config(page_title="Car Price Estimator", page_icon="🚗")
+
+@st.cache_resource 
+def load_data():
+    model = joblib.load('car_price_model.pkl')
+    df = pd.read_csv("CarPriceDataset.csv", sep=";")
+    return model, df
+
+model, df = load_data()
 
 st.title("Car Price Estimator")
-st.write("Provide the vehicle data to get the estimated price")
+st.write("Provide the data below to get an estimated price:")
 
-brand = st.selectbox("Brand", ['Toyota', 'Kia', 'Chevrolet', 'Mercedes', 'Audi', 'Volkswagen', 'Ford', 'BMW', 'Honda', 'Hyundai'])
-model_car = st.text_input("Model", "Corolla") 
-year = st.number_input("Year", min_value=2000, max_value=2026, value=2015)
-engine = st.number_input("Engine Size", 1.0, 5.0, 2.0)
-fuel = st.selectbox("Fuel Type", ['Diesel', 'Petrol', 'Hybrid', 'Electric'])
-trans = st.selectbox("Transmission", ['Manual', 'Automatic', 'Semi-Automatic'])
-mileage = st.number_input("Mileage", value=50000)
-doors = st.selectbox("Doors", [2, 4])
-owners = st.slider("Owners Number", 1, 5, 1)
+st.divider()
 
-# Botão de previsão
-if st.button("Estimate Price"):
-    input_df = pd.DataFrame([{
-        'Brand': brand, 'Model': model_car, 'Year': year,
-        'Engine_Size': engine, 'Fuel_Type': fuel, 'Transmission': trans,
-        'Mileage': mileage, 'Doors': doors, 'Owner_Count': owners
+col1, col2 = st.columns(2)
+
+with col1:
+
+    brands = sorted(df['Brand'].unique())
+    brand = st.selectbox("Brand", brands)
+
+
+    models_filtered = sorted(df[df['Brand'] == brand]['Model'].unique())
+    model_car = st.selectbox("Model", models_filtered)
+
+
+    fuels = sorted(df['Fuel_Type'].unique())
+    fuel = st.selectbox("Fuel Type", fuels)
+
+
+    transmissions = sorted(df['Transmission'].unique())
+    trans = st.selectbox("Transmission", transmissions)
+
+with col2:
+
+    year = st.number_input("Year", min_value=2000, max_value=2026, value=2020)
+
+    engine = st.number_input("Engine Size (L)", min_value=1.0, max_value=6.0, value=2.0, step=0.1)
+
+    door_options = sorted(df['Doors'].unique())
+    doors = st.selectbox("Doors", door_options)
+
+    owner_options = sorted(df['Owner_Count'].unique())
+    owners = st.selectbox("Number of Previous Owners", owner_options)
+
+    mileage = st.number_input("Mileage (km)", min_value=0, value=20000, step=1000)
+
+st.divider()
+
+if st.button("Estimate Market Price", use_container_width=True):
+
+    input_data = pd.DataFrame([{
+        'Brand': brand,
+        'Model': model_car,
+        'Year': year,
+        'Engine_Size': engine,
+        'Fuel_Type': fuel,
+        'Transmission': trans,
+        'Mileage': mileage,
+        'Doors': doors,
+        'Owner_Count': owners
     }])
     
-    prediction = model.predict(input_df)
-    st.success(f"The estimated price is: ${prediction[0]:,.2f}")
+    try:
+        prediction = model.predict(input_data)
+        
+        st.balloons()
+        st.success(f"### The estimated market price is: **${prediction[0]:,.2f}**")
+              
+    except Exception as e:
+        st.error(f"Error processing the forecast: {e}")
+
+st.markdown("---")
+st.markdown("Developed by Bernardo Olavo | [GitHub] https://github.com/dsbernardo-olavo/ | [LinkedIn] https://www.linkedin.com/in/ds-bernardo-olavo/")
