@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-st.set_page_config(page_title="Car Price Estimator", page_icon="🚗")
+st.set_page_config(page_title="Car Price Predictor", page_icon="🚗")
 
 @st.cache_resource 
 def load_data():
