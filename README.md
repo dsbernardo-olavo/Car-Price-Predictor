@@ -74,7 +74,7 @@ This project includes an **interactive Streamlit app** that allows users to inpu
 
 🛠️ **Tools used to build the project:**
 
-- Kaggle (dataset source)
+- Kaggle
 - Python
 - https://share.streamlit.io/
 
