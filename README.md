@@ -1,11 +1,11 @@
 <p align="center">
-  <img width="1594" height="994" alt="image" src="https://github.com/user-attachments/assets/1da69b5e-c1c4-405a-9ce1-5d34d2df2954" />
+  <img width="1594" height="994" alt="image" src="https://github.com/user-attachments/assets/7a078ada-41d9-4870-94b4-bc0c7cd8663d"/>
 </p>
 
 📊 This project aims to develop **a solution for predicting car prices based on historical data**.
 
 <p align="center">
-  <img width="1919" height="887" alt="image" src="https://github.com/user-attachments/assets/af954bdc-c096-4b04-a003-95a3739a06f9" />
+  <img width="1919" height="887" alt="image" src="https://github.com/user-attachments/assets/8c363703-1c55-469b-96fe-3a5dafc77ba8" />
 </p>
 
 🔗 https://car-price-predictor-dsbernardo.streamlit.app/
