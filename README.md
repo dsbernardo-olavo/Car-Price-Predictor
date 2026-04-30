@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="1594" height="994" alt="image" src="https://github.com/user-attachments/assets/7a078ada-41d9-4870-94b4-bc0c7cd8663d"/>
+  <img src="https://github.com/user-attachments/assets/7a078ada-41d9-4870-94b4-bc0c7cd8663d"/>
 </p>
 
 📊 This project aims to develop **a solution for predicting car prices based on historical data**.
