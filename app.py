@@ -13,7 +13,7 @@ def load_data():
 
 model, df = load_data()
 
-st.title("Car Price Estimator 🚗")
+st.title("Car Price Predictor 🚗")
 st.write("Provide the data below to get an estimated price for your car")
 
 st.divider()
